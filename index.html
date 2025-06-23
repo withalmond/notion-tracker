@@ -1,18 +1,35 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Tracking Pixel</title>
+    <title>Notion GA4 Pixel</title>
   </head>
   <body>
     <script>
-      const cid = Math.floor(Math.random() * 1000000000).toString(); // random client ID
-      const url = `https://www.google-analytics.com/g/collect?v=2&tid=G-WXRW6F14BC&cid=${cid}&t=pageview&dt=NotionPage&dp=%2Fnotion`;
+      const clientId = Math.floor(Math.random() * 1000000000).toString() + '.' + Date.now();
+      const apiSecret = '2fsC5GCnT-yqAmF8StRggw';
+      const measurementId = 'G-WXRW6F14BC';
+      const url = `https://www.google-analytics.com/mp/collect?measurement_id=${measurementId}&api_secret=${apiSecret}`;
+
+      const payload = {
+        client_id: clientId,
+        events: [{
+          name: "page_view",
+          params: {
+            page_title: "NotionPage",
+            page_location: "https://notion.so",
+            page_path: "/notion"
+          }
+        }]
+      };
 
       fetch(url, {
-        method: 'GET',
-        mode: 'no-cors'
+        method: "POST",
+        body: JSON.stringify(payload),
+        headers: {
+          "Content-Type": "application/json"
+        }
       });
     </script>
-    <p style="font-size: 10px; color: #ccc;">Tracking initialized.</p>
+    <p style="font-size: 10px; color: #aaa;">tracking initialized.</p>
   </body>
 </html>
