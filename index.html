@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>Tracking Pixel</title>
+  </head>
   <body>
     <script>
-      fetch("https://www.google-analytics.com/g/collect?v=2&t=pageview&tid=G-WXRW6F14BC&cid=123456789.1234567890&dt=NotionPage&dp=%2Fnotion", {
-        method: "GET",
-        mode: "no-cors"
+      const cid = Math.floor(Math.random() * 1000000000).toString(); // random client ID
+      const url = `https://www.google-analytics.com/g/collect?v=2&tid=G-WXRW6F14BC&cid=${cid}&t=pageview&dt=NotionPage&dp=%2Fnotion`;
+
+      fetch(url, {
+        method: 'GET',
+        mode: 'no-cors'
       });
     </script>
-    <p>Loading...</p>
+    <p style="font-size: 10px; color: #ccc;">Tracking initialized.</p>
   </body>
 </html>
