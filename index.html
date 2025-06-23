@@ -1,35 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Notion GA4 Pixel</title>
+    <title>Notion Webhook Test</title>
   </head>
   <body>
     <script>
-      const clientId = Math.floor(Math.random() * 1000000000).toString() + '.' + Date.now();
-      const apiSecret = '2fsC5GCnT-yqAmF8StRggw';
-      const measurementId = 'G-WXRW6F14BC';
-      const url = `https://www.google-analytics.com/mp/collect?measurement_id=${measurementId}&api_secret=${apiSecret}`;
-
-      const payload = {
-        client_id: clientId,
-        events: [{
-          name: "page_view",
-          params: {
-            page_title: "NotionPage",
-            page_location: "https://notion.so",
-            page_path: "/notion"
-          }
-        }]
-      };
-
-      fetch(url, {
+      fetch("https://webhook.site/73ca1489-a090-4bc3-aa21-3bc8b304f97d", {
         method: "POST",
-        body: JSON.stringify(payload),
+        body: JSON.stringify({
+          message: "Hello from Notion tracker 👋",
+          timestamp: Date.now()
+        }),
         headers: {
           "Content-Type": "application/json"
         }
       });
     </script>
-    <p style="font-size: 10px; color: #aaa;">tracking initialized.</p>
+    <p style="font-size: 10px; color: #aaa;">webhook test sent.</p>
   </body>
 </html>
